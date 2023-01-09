@@ -1,9 +1,11 @@
 ﻿using MusicApplication.Commands;
+using MusicApplication.Service;
 using MusicApplication.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,16 +24,28 @@ namespace MusicApplication.ViewModels
             set { myWrapPanel = value; OnPropertyChanged(); }
         }
 
-
+        public bool isClickedMain { get; set; } = false;
 
 
         public MainViewModel()
         {
             PlusButtonCommand = new RelayCommand(p =>
             {
-                var view = new MusicDownloadingUC();
-                view.Margin = new Thickness(10, 10, 0, 0);
-                MyWrapPanel.Children.Add(view);
+                MusicWindow musicWindow = new MusicWindow();
+                MusicViewModel musicViewModel = new MusicViewModel(musicWindow);
+                musicWindow.pathTxtb.Text = musicViewModel.Path;
+                musicWindow.DataContext = musicViewModel;
+                musicWindow.ShowDialog();
+                if (musicViewModel.IsClicked)
+                {
+                    Thread task = null;
+                    MusicDownloadingUCViewModel musicDownloadingUCViewModel = new MusicDownloadingUCViewModel(musicViewModel.Music, task);
+                    MusicDownloadingUC musicDownloadingUC = new MusicDownloadingUC();
+                    musicDownloadingUC.DataContext = musicDownloadingUCViewModel;
+                    myWrapPanel.Children.Add(musicDownloadingUC);
+                    //MusicService.SaveMP3(musicDownloadingUCViewModel, task);
+
+                }
             });
         }
 

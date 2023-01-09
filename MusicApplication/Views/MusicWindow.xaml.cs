@@ -11,20 +11,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MusicApplication.Views
 {
     /// <summary>
-    /// Interaction logic for MusicDownloadingUC.xaml
+    /// Interaction logic for MusicWindow.xaml
     /// </summary>
-    public partial class MusicDownloadingUC : UserControl
+    public partial class MusicWindow : Window
     {
-        public MusicDownloadingUC()
+        public MusicWindow()
         {
             InitializeComponent();
+            
            
+            
         }
     }
 }

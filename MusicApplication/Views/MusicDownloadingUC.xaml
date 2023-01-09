@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MusicApplication.Views"
              mc:Ignorable="d" 
-             Height="100" Width="150">
+             Height="280" Width="150">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
@@ -14,15 +14,30 @@
 
 
         <Grid Background="DarkRed" Grid.Row="0">
-            <Button Background="DarkRed" Foreground="White" Content="Wait Download" FontSize="5"></Button>
+            <Button Background="DarkRed" Foreground="White" Content="Wait Download" FontSize="15"></Button>
         </Grid>
 
 
         <Grid Grid.Row="1">
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Enter URL" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
-                <TextBox Margin="10" FontSize="10"></TextBox>
-                <Button Margin="10,-1,10,10" Background="Black" Foreground="White" Content="Download" FontSize="8" Width="100" Height="15"></Button>
+                <TextBlock Text="File Name" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
+                <TextBlock Margin="10" FontSize="10"></TextBlock>
+                <TextBlock Text="URL" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
+                <TextBlock Margin="10" FontSize="10"></TextBlock>
+                <TextBlock Text="Path" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
+                <TextBlock Margin="10" FontSize="10"></TextBlock>
+                <TextBlock Text="Time" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
+                <StackPanel Orientation="Horizontal"
+                            Height="20" 
+                            Width="150"
+                            Margin="4,10,10,10"
+                            >
+                    <TextBlock Text="Minute : "></TextBlock>
+                    <TextBlock Name="minute" Height="15"></TextBlock>
+
+                    <TextBlock Margin="26,0,0,0" Text="Second : "></TextBlock>
+                    <TextBlock Name="second" Height="15"></TextBlock>
+                </StackPanel>
             </StackPanel>
         </Grid>
         
