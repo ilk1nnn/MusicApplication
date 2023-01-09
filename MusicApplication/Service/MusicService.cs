@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using VideoLibrary;
 
 namespace MusicApplication.Service
@@ -37,16 +39,15 @@ namespace MusicApplication.Service
                         engine.Convert(inputFile, outputFile);
                     }
                     File.Delete(Path.Combine(source, vid.FullName));
-                    viewmodel.StopTimer();
                     viewmodel.Status = "Downloaded";
                 }
                 catch (Exception ex)
                 {
-                    viewmodel.StopTimer();
                     viewmodel.Status = "Cancelled. " + ex.Message;
                 }
             });
             task.Start();
+
         }
     }
 }

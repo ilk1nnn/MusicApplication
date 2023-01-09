@@ -5,42 +5,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MusicApplication.Views"
              mc:Ignorable="d" 
-             Height="280" Width="150">
-    <Grid Background="White">
+             Height="280" Width="250">
+    <Grid Background="Black" Margin="15,10,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
 
-        <Grid Background="DarkRed" Grid.Row="0">
-            <Button Background="DarkRed" Foreground="White" Content="Wait Download" FontSize="15"></Button>
+        <Grid Background="Black" Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding WaitDownloadCommand}" Background="DarkRed" Foreground="White" Width="80" Content="Pause" FontSize="20"></Button>
+                <Button Command="{Binding PlayDownloadCommand}" Background="Green" Foreground="White" Width="80" Content="Play" FontSize="20"></Button>
+                <Button Command="{Binding CancelDownloadCommand}" Background="Red" Foreground="White" Width="80" Content="Cancel" FontSize="20"></Button>
+            </StackPanel>
         </Grid>
 
 
         <Grid Grid.Row="1">
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="File Name" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
-                <TextBlock Margin="10" FontSize="10"></TextBlock>
-                <TextBlock Text="URL" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
-                <TextBlock Margin="10" FontSize="10"></TextBlock>
-                <TextBlock Text="Path" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
-                <TextBlock Margin="10" FontSize="10"></TextBlock>
-                <TextBlock Text="Time" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
-                <StackPanel Orientation="Horizontal"
+                <TextBlock Foreground="White" Text="File Name" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
+                <TextBlock  Foreground="White" TextAlignment="Center" Name="filenametxtb" Margin="10" FontSize="10"></TextBlock>
+                <TextBlock Foreground="White"  Text="URL" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
+                <TextBlock  Foreground="White"  TextAlignment="Center" x:Name="urltxtb" Margin="10" FontSize="10"></TextBlock>
+                <TextBlock  Foreground="White"  Text="Path" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
+                <TextBlock  Foreground="White"  TextAlignment="Center" Name="pathtxtb" Margin="10" FontSize="10"></TextBlock>
+                <TextBlock  Foreground="White"  Text="Status" FontWeight="ExtraBlack" TextAlignment="Center" FontSize="10" Margin="0,5,0,0"></TextBlock>
+                <TextBlock  Foreground="White" Text="{Binding Status}"   TextAlignment="Center" Name="statustxtb" Margin="10" FontSize="10"></TextBlock>
+
+                <!--<StackPanel Orientation="Horizontal"
                             Height="20" 
                             Width="150"
                             Margin="4,10,10,10"
                             >
-                    <TextBlock Text="Minute : "></TextBlock>
-                    <TextBlock Name="minute" Height="15"></TextBlock>
-
-                    <TextBlock Margin="26,0,0,0" Text="Second : "></TextBlock>
-                    <TextBlock Name="second" Height="15"></TextBlock>
-                </StackPanel>
+                    <TextBlock Foreground="White"  Text="Minute : "></TextBlock>
+                    <TextBlock Foreground="White" Text="{Binding Minute,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="minute" Height="15"></TextBlock>
+                </StackPanel>-->
             </StackPanel>
         </Grid>
-        
-        
+
+
     </Grid>
 </UserControl>

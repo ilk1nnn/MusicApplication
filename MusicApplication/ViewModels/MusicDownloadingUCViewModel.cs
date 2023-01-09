@@ -1,10 +1,12 @@
-﻿using MusicApplication.Models;
+﻿using MusicApplication.Commands;
+using MusicApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace MusicApplication.ViewModels
@@ -54,6 +56,11 @@ namespace MusicApplication.ViewModels
         public Thread _task { get; set; }
 
 
+        public RelayCommand WaitDownloadCommand { get; set; }
+        public RelayCommand PlayDownloadCommand { get; set; }
+        public RelayCommand CancelDownloadCommand { get; set; }
+
+
         public MusicDownloadingUCViewModel(Music music,Thread task)
         {
             _task = task;
@@ -64,7 +71,29 @@ namespace MusicApplication.ViewModels
             Timer.Interval = new TimeSpan(0, 0, 1);
             Timer.Tick += IncreaseSeconds;
             Timer.Start();
-            Status = "Downloading ...";
+            Status = "Downloading...";
+
+            WaitDownloadCommand = new RelayCommand(w =>
+            {
+                MessageBox.Show("Paused");
+                Status = "Paused";
+                _task.Suspend();
+            });
+
+            PlayDownloadCommand = new RelayCommand(p =>
+            {
+                MessageBox.Show("Continue");
+                Status = "Downloading...";
+                _task.Resume();
+            });
+
+            CancelDownloadCommand = new RelayCommand(p =>
+            {
+                MessageBox.Show("Cancelled");
+                Status = "Camceled";
+                _task.Abort();
+            });
+
         }
 
         private void IncreaseSeconds(object sender, EventArgs e)

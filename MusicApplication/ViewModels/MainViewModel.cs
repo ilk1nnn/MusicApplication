@@ -39,12 +39,18 @@ namespace MusicApplication.ViewModels
                 if (musicViewModel.IsClicked)
                 {
                     Thread task = null;
-                    MusicDownloadingUCViewModel musicDownloadingUCViewModel = new MusicDownloadingUCViewModel(musicViewModel.Music, task);
                     MusicDownloadingUC musicDownloadingUC = new MusicDownloadingUC();
+                    MusicDownloadingUCViewModel musicDownloadingUCViewModel = new MusicDownloadingUCViewModel(musicViewModel.Music, task);
                     musicDownloadingUC.DataContext = musicDownloadingUCViewModel;
+                    musicViewModel.Music.Name = musicWindow.nametxtb.Text;
+                    musicViewModel.Music.Url = musicWindow.urltxtb.Text;
+                    musicViewModel.Music.Path = musicWindow.pathTxtb.Text;
+                    musicDownloadingUC.urltxtb.Text = musicViewModel.Music.Url;
+                    musicDownloadingUC.filenametxtb.Text = musicViewModel.Music.Name;
+                    musicDownloadingUC.pathtxtb.Text = musicViewModel.Music.Path;
                     myWrapPanel.Children.Add(musicDownloadingUC);
-                    //MusicService.SaveMP3(musicDownloadingUCViewModel, task);
-
+                    MusicService.SaveMP3(musicDownloadingUCViewModel, task);
+                    
                 }
             });
         }

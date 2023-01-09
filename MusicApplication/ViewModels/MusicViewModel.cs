@@ -36,6 +36,26 @@ namespace MusicApplication.ViewModels
 
         public bool IsClicked { get; set; } = false;
 
+        private string name;
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; OnPropertyChanged(); }
+        }
+
+
+
+        private string url;
+
+        public string Url
+        {
+            get { return url; }
+            set { url = value; OnPropertyChanged(); }
+        }
+
+
+
 
         public MusicViewModel(MusicWindow musicWindow)
         {
@@ -47,6 +67,9 @@ namespace MusicApplication.ViewModels
                 try
                 {
                     IsClicked = true;
+                    Music.Name = Name;
+                    Music.Url = Url;
+                    Music.Path = Path;
                     _musicWindow.Close();
                 }
                 catch (Exception ex)

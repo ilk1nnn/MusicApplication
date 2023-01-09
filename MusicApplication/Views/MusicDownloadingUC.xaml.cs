@@ -24,6 +24,7 @@ namespace MusicApplication.Views
         public MusicDownloadingUC()
         {
             InitializeComponent();
+
            
         }
     }
